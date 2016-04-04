@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Difficulty rating:</strong>
+  <%= @score.difficulty_rating %>
+</p>
+
+<p>
+  <strong>Workload rating:</strong>
+  <%= @score.workload_rating %>
+</p>
+
+<p>
+  <strong>Likeability rating:</strong>
+  <%= @score.likeability_rating %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @score.comment %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @score.course_id %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>
