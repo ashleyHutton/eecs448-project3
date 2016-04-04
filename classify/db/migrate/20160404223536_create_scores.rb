@@ -4,7 +4,7 @@ class CreateScores < ActiveRecord::Migration
       t.integer :difficulty_rating
       t.integer :workload_rating
       t.integer :likeability_rating
-      t.text_area :comment
+      t.text    :comment
       t.integer :course_id
 
       t.timestamps null: false
