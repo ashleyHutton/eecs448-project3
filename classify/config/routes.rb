@@ -1,3 +1,5 @@
+##
+# Routes - generates paths and URLs, avoiding need to hardcode strings in your views
 Rails.application.routes.draw do
 
   resources :courses
