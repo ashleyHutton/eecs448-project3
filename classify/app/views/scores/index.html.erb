@@ -1,38 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Course Scores</h1>
-<h3>Below are all course ratings</h3>
+<h2>Course Scores</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Difficulty rating</th>
-      <th>Workload rating</th>
-      <th>Likeability rating</th>
-      <th>Comment</th>
-      <th>Course</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @scores.each do |score| %>
+<div class = "table">
+  <table  class = "table table-striped">
+    <thead>
       <tr>
-        <td><%= score.difficulty_rating %></td>
-        <td><%= score.workload_rating %></td>
-        <td><%= score.likeability_rating %></td>
-        <td><%= score.comment %></td>
-        <td><%= score.course_id %></td>
-        <td><%= link_to 'Show', score %></td>
-        <td><%= link_to 'Edit', edit_score_path(score) %></td>
-        <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Difficulty rating</th>
+        <th>Workload rating</th>
+        <th>Likeability rating</th>
+        <th>Comment</th>
+        <th>Course</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @scores.each do |score| %>
+        <tr>
+          <td><%= score.difficulty_rating %></td>
+          <td><%= score.workload_rating %></td>
+          <td><%= score.likeability_rating %></td>
+          <td><%= score.comment %></td>
+          <td><%= score.course_id %></td>
+          <td><%= link_to 'Show', score %></td>
+          <td><%= link_to 'Edit', edit_score_path(score) %></td>
+          <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Score', new_score_path %></br>
-<%= link_to 'Schools', schools_path %> </br>
-<%= link_to 'Courses', courses_path %>
+
+<%= link_to 'New Score', new_score_path %>

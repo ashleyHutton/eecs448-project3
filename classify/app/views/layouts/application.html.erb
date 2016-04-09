@@ -7,8 +7,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <!-- Navbar -->
+  <nav>
+    <div class = "container">
 
-<%= yield %>
+        <!-- Prelude logo -->
+        <div class="navbar-header">
+          <a>
+            <h2><%= link_to 'Classify', root_path %></h2>
+          </a>
+        </div>
+        <div class=" ">
+          <ul class="nav navbar navbar-right">
+            <li class="button"><%= link_to 'Schools', schools_path %></li>
+          </ul>
+          <ul class="nav navbar navbar-right">
+            <li class="button"><%= link_to 'Courses', courses_path %></li>
+          </ul>
+          <ul class="nav navbar navbar-right">
+            <li class="button"><%= link_to 'Scores', root_path %> </li>
+          </ul>
+        </div>
+    </div>
+  </nav>
+
+
+  <div class = "container">
+    <%= yield %>
+
+  </div>
+
+
 
 </body>
 </html>
