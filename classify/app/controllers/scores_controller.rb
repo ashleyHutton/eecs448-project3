@@ -19,6 +19,7 @@ class ScoresController < ApplicationController
   ##
   # GET /scores/new
   def new
+    @courses = Course.all
     @score = Score.new
   end
 

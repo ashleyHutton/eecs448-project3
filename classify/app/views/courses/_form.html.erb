@@ -12,12 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :school_id %><br>
+    <!-- :course_id is foreign key in Scores table,
+         :Course.all specifies what in the Course table to include in the dropdown menu
+         :id is primary key in the Course table
+         :name is what attribute of the Course table will display in the menu-->
+    <%= f.collection_select(:school_id, School.all, :id, :name ) %>
   </div>
   <div class="field">
-    <%= f.label :school_id %><br>
-    <%= f.number_field :school_id %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

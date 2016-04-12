@@ -22,10 +22,10 @@
           <td><%= score.workload_rating %></td>
           <td><%= score.likeability_rating %></td>
           <td><%= score.comment %></td>
-          <td><%= score.course_id %></td>
+          <td><%= score.course.name %></td>
           <td><%= link_to 'Show', score %></td>
           <td><%= link_to 'Edit', edit_score_path(score) %></td>
-          <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <!--<td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
         </tr>
       <% end %>
     </tbody>
