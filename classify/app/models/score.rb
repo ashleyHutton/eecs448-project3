@@ -23,7 +23,7 @@ class Score < ActiveRecord::Base
 	    :search_query,
 	    :with_course_id,
 	    :with_school_id,
-	    :with_created_at_gte
+	    #:with_created_at_gte
 	  ]
 	)
 
@@ -83,15 +83,15 @@ class Score < ActiveRecord::Base
 
 	  scope :with_course_id, lambda { |course_ids|
 	    # Filters scores with any of the given course_ids
-	    where(course_id : [*course_ids])
+	    where(course_id: [*course_ids])
 	  }
 	  scope :with_school_id, lambda { |school_ids|
 	    # Filters scores with any of the given school_ids
-	    where(school_id : [*school_ids])
+	    where(school_id: [*school_ids])
 	  }
-	  scope :with_created_at_gte, lambda { |ref_date|
-	    ...
-	  }
+	  #scope :with_created_at_gte, lambda { |ref_date|
+	  #  ...
+	  #}
 
 	  # This method provides select options for the `sorted_by` filter select input.
 	  # It is called in the controller as part of `initialize_filterrific`.
