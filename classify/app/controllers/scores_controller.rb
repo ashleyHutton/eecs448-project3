@@ -8,6 +8,17 @@ class ScoresController < ApplicationController
   # GET /scores.json
   def index
     @scores = Score.all
+
+    @filterrific = initialize_filterrific(
+      Score,
+      params[:filterrific]
+    ) or return
+    #@scores = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   ##
