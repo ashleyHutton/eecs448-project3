@@ -5,5 +5,11 @@
   <%= @school.name %>
 </p>
 
+<% @school.courses.each do |course| %>
+  <li>
+    <%= link_to course.name + '', course %>
+  </li>
+  <% end %>
+
 <%= link_to 'Edit', edit_school_path(@school) %> |
 <%= link_to 'Back', schools_path %>
