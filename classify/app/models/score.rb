@@ -22,7 +22,7 @@ class Score < ActiveRecord::Base
 	    :sorted_by,
 	    :search_query,
 	    :with_course_id,
-	    :with_school_id,
+	    #:with_school_id,
 	    #:with_created_at_gte
 	  ]
 	)
@@ -46,7 +46,7 @@ class Score < ActiveRecord::Base
 		  # configure number of OR conditions for provision
 		  # of interpolation arguments. Adjust this if you
 		  # change the number of OR conditions.
-		  num_or_conds = 2
+		  num_or_conds = 3
 		  where(
 		    terms.map { |term|
 		      "((scores.difficulty_rating) LIKE ? OR (scores.likeability_rating) LIKE ? OR (scores.workload_rating) LIKE ?)"
@@ -55,10 +55,12 @@ class Score < ActiveRecord::Base
 		  )
 	  }
 	  
-	  scope :sorted_by, lambda { |sort_key|
+	  scope :sorted_by, lambda { |sort_option|
 			# extract the sort direction from the param value.
 			direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
 			case sort_option.to_s
+				#when /^name_/
+				#order("scores.name #{direction}")
 				when /^created_at_/
 				# Simple sort on the created_at column.
 				# Make sure to include the table name to avoid ambiguous column names.
@@ -73,8 +75,8 @@ class Score < ActiveRecord::Base
 					# the country. We can't use JOIN since not all students might have
 					# a country.
 					order("(courses.name) #{ direction }").includes(:courses)
-				when /^school_name_/
-					order("(schoolname) #{ direction }").includes(:schools)
+				#when /^school_name_/
+					#order("(schools.name) #{ direction }").includes(:schools)
 
 		  else
 		    raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
@@ -85,10 +87,10 @@ class Score < ActiveRecord::Base
 	    # Filters scores with any of the given course_ids
 	    where(course_id: [*course_ids])
 	  }
-	  scope :with_school_id, lambda { |school_ids|
+	 # scope :with_school_id, lambda { |school_ids|
 	    # Filters scores with any of the given school_ids
-	    where(school_id: [*school_ids])
-	  }
+	 #   where(school_id: [*school_ids])
+	 # }
 	  #scope :with_created_at_gte, lambda { |ref_date|
 	  #  ...
 	  #}
@@ -97,11 +99,10 @@ class Score < ActiveRecord::Base
 	  # It is called in the controller as part of `initialize_filterrific`.
 	  def self.options_for_sorted_by
 	    [
-	      ['Name (a-z)', 'name_asc'],
+	      #['Name (a-z)', 'name_asc'],
 	      ['Newest Scores', 'created_at_desc'],
 	      ['Oldest Scores', 'created_at_asc'],
-	      ['Course (a-z)', 'course_name_asc'],
-	      ['School (a-z)', 'school_name_asc']
+	      #['Course (a-z)', 'course_name_asc']
 	    ]
 	  end
 

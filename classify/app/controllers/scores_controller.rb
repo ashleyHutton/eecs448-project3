@@ -17,12 +17,12 @@ class ScoresController < ApplicationController
         with_course_id: Course.options_for_select
       }
     ) or return
-    #@scores = @filterrific.find.page(params[:page])
+    @scores = @filterrific.find
 
     respond_to do |format|
       format.html
-      #format.js
       format.json
+      format.js
     end
 
   rescue ActiveRecord::RecordNotFound => e

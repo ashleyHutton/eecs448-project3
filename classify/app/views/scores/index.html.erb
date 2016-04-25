@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <h2>Course Scores</h2>
 
 <%= form_for_filterrific @filterrific do |f| %>
@@ -21,7 +23,7 @@
   </div>
   <div>
     Sorted by
-    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], { include_blank: '- Any -'}) %>
   </div>
   <div>
     <%= link_to(
@@ -33,13 +35,14 @@
   <%#=render_filterrific_spinner %>
 <% end %>
 
-<%= render(
-  partial: 'scores/list',
-  locals: { scores: @scores }
-) %>
+<div id="filterrific_results">
+  <%= render(
+    partial: 'scores/list',
+    locals: { scores: @scores }
+  ) %>
+</div>
 
 <br>
-
 
 <%= link_to 'New Score', new_score_path %>
 

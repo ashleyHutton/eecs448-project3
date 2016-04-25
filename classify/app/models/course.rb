@@ -14,8 +14,8 @@ class Course < ActiveRecord::Base
 		  available_filters: [
 		    :sorted_by,
 		    :search_query,
-		    :with_school_id,
-		    :with_created_at_gte
+		    #:with_school_id,
+		    #:with_created_at_gte
 		  ]
 		)
 
