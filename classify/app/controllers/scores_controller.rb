@@ -11,14 +11,23 @@ class ScoresController < ApplicationController
 
     @filterrific = initialize_filterrific(
       Score,
-      params[:filterrific]
+      params[:filterrific],
+      select_options: {
+        sorted_by: Score.options_for_sorted_by,
+        with_course_id: Course.options_for_select
+      }
     ) or return
     #@scores = @filterrific.find.page(params[:page])
 
     respond_to do |format|
       format.html
-      format.js
+      #format.js
+      format.json
     end
+
+  rescue ActiveRecord::RecordNotFound => e
+    puts "Had to reset filterrific params: #{e.message}"
+    redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
   ##
