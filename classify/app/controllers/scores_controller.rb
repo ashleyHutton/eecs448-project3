@@ -2,6 +2,7 @@
 # Scores Controller
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: :new
 
   ##
   # GET /scores

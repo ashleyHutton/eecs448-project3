@@ -2,6 +2,7 @@
 # Routes - generates paths and URLs, avoiding need to hardcode strings in your views
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :courses
   resources :scores
   resources :schools
