@@ -15,14 +15,8 @@
  */
 
  @import 'bootstrap.min';
+ @import 'bootstrap-theme.min'
  @import 'stylesheet';
+ @import url(https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,300);
  @import url(https://fonts.googleapis.com/css?family=Raleway);
  @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
-
-
- h1, h2, h3, h4, h5, h6 {
-     font-family: 'Raleway';
- }
- p, div, td {
-     font-family: 'Raleway';
- }

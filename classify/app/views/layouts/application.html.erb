@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav>
+  <nav class = "navbar navbar-ct-transparent">
     <div class = "container">
 
         <!-- Prelude logo -->
@@ -20,31 +20,55 @@
             <%= link_to image_tag('classify_logo_v3.png', width: '210', height: '60', alt: 'Molecular structure of Buckminsterfullerene'), root_path, title: 'Buckminsterfullerene', rel: 'tooltip', relative: true %>
           </a>
         </div>
-        <div class=" ">
 
-          <% if user_signed_in? %>
-            <ul class="nav navbar navbar-right">
-              <li class="button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
-            </ul>
-          <% else %>
-            <ul class="nav navbar navbar-right">
-              <li class="button"><%= link_to('Login', new_user_session_path)  %> </li>
-            </ul>
-          <% end %>
+          <!--Collect the nav links, forms, and other content for toggling -->
+     <!--<div class="collapse navbar-collapse" id="navigation-example-2">
+       <ul class="nav navbar-nav navbar-right">
+           <li>
+             <a href = "<%= scores_path %>" class="btn btn-danger btn-simple">Scores</a>
+           </li>
+           <li>
+             <a href = "<%= courses_path %>" class="btn btn-danger btn-simple">Courses</a>
+           </li>
+           <li>
+           <li>
+             <a href = "<%= schools_path %>" class="btn btn-danger btn-simple">Schools</a>
+           </li>
 
-          <ul class="nav navbar navbar-right">
-            <li class="button"><%= link_to 'Schools', schools_path %></li>
-          </ul>
-          <ul class="nav navbar navbar-right">
-            <li class="button"><%= link_to 'Courses', courses_path %></li>
-          </ul>
-          <ul class="nav navbar navbar-right">
-            <li class="button"><%= link_to 'Scores', root_path %> </li>
-          </ul>
+           <% if user_signed_in? %>
+             <li>
+               <a href="<%= destroy_user_session_path %>" target="_blank" class="btn btn-danger btn-fill">Logout</a>
+             </li>
+           <% else %>
+             <li>
+               <a href="<%= new_user_session_path %>" target="_blank" class="btn btn-danger btn-fill">Login</a>
+             </li>
+
+           <% end %>
+         </ul>
+       </div><!-- /.navbar-collapse -->
 
 
+        <% if current_user %>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Login', new_user_session_path %> </li>
+        </ul>
+        <% end %>
+       <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Schools', schools_path %></li>
+        </ul>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Courses', courses_path %></li>
+        </ul>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Scores', root_path %> </li>
+        </ul>
 
-        </div>
+
     </div>
   </nav>
 

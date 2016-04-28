@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Listing Courses</h2>
+<h2>
+  Courses
+  <button type="button" class="btn btn-sm btn-default"><%= link_to 'New Course', new_course_path %></button>
+</h2>
 
 <div class = "table">
   <table class = "table table-striped">
@@ -25,7 +28,3 @@
     </tbody>
   </table>
 </div>
-
-<br>
-
-<%= link_to 'New Course', new_course_path %>

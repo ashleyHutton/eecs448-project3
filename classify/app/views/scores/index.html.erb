@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 
-
-<h2>Course Scores</h2>
+<h2>
+  Course Scores
+  <button type="button" class="btn btn-sm btn-default"><%= link_to 'New Score', new_score_path %></button>
+</h2>
 
 <%= form_for_filterrific @filterrific do |f| %>
   <div>
@@ -42,9 +44,7 @@
   ) %>
 </div>
 
+
 <br>
 
 <%= link_to 'New Score', new_score_path %>
-
-
-
