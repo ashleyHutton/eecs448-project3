@@ -1,40 +1,50 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <h2>Course Scores</h2>
 
-<div class = "table">
-  <table  class = "table table-striped">
-    <thead>
-      <tr>
-        <th>Course</th>
-        <th>School</th>
-        <th>Difficulty</th>
-        <th>Workload</th>
-        <th>Likeability</th>
-        <th>Comment</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
+<%= form_for_filterrific @filterrific do |f| %>
+  <div>
+    Search
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+  </div>
+  <div>
+    Course
+    <%= f.select(
+      :with_course_id,
+      @filterrific.select_options[:with_course_id],
+      { include_blank: '- Any -' }
+    ) %>
+  </div>
+  <div>
+    Sorted by
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], { include_blank: '- Any -'}) %>
+  </div>
+  <div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+  <%# add an automated spinner to your form when the list is refreshed %>
+  <%#=render_filterrific_spinner %>
+<% end %>
 
-    <tbody>
-      <% @scores.each do |score| %>
-        <tr>
-          <td><%= score.course.name %></td>
-          <td><%= score.course.school.name %></td>
-          <td><%= score.difficulty_rating %></td>
-          <td><%= score.workload_rating %></td>
-          <td><%= score.likeability_rating %></td>
-          <td><%= truncate(score.comment, :length => 30) %></td>
-          <td><%= link_to 'Show', score %></td>
-          <!--<td><%= link_to 'Edit', edit_score_path(score) %></td>-->
-          <!--<td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div id="filterrific_results">
+  <%= render(
+    partial: 'scores/list',
+    locals: { scores: @scores }
+  ) %>
 </div>
 
 <br>
 
-
 <%= link_to 'New Score', new_score_path %>
+
+
+

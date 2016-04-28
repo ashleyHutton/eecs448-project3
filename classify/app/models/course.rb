@@ -9,4 +9,19 @@ class Course < ActiveRecord::Base
 
 	validates_uniqueness_of :name
 
+	filterrific(
+		  default_filter_params: { sorted_by: 'name_desc' },
+		  available_filters: [
+		    :sorted_by,
+		    :search_query,
+		    #:with_school_id,
+		    #:with_created_at_gte
+		  ]
+		)
+
+	def self.options_for_select
+	  order('LOWER(name)').map { |e| [e.name, e.id] }
+	end
+
+
 end

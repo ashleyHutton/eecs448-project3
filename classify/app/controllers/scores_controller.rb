@@ -9,6 +9,26 @@ class ScoresController < ApplicationController
   # GET /scores.json
   def index
     @scores = Score.all
+
+    @filterrific = initialize_filterrific(
+      Score,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Score.options_for_sorted_by,
+        with_course_id: Course.options_for_select
+      }
+    ) or return
+    @scores = @filterrific.find
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.js
+    end
+
+  rescue ActiveRecord::RecordNotFound => e
+    puts "Had to reset filterrific params: #{e.message}"
+    redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
   ##
