@@ -2,7 +2,7 @@
 # Routes - generates paths and URLs, avoiding need to hardcode strings in your views
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :courses
   resources :scores
   resources :schools
