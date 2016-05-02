@@ -29,6 +29,8 @@ gem 'filterrific'
 
 gem 'better_errors'
 
+gem 'geocoder'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -51,5 +53,5 @@ group :development do
   gem 'spring'
 end
 
-# Devise handles user authentication 
+# Devise handles user authentication
 gem 'devise'
