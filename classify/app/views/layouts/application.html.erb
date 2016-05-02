@@ -53,12 +53,7 @@
         <ul class="nav navbar navbar-right">
           <li class="button"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
         </ul>
-      <% else %>
-        <ul class="nav navbar navbar-right">
-          <li class="button"><%= link_to 'Login', new_user_session_path %> </li>
-        </ul>
-        <% end %>
-       <ul class="nav navbar navbar-right">
+               <ul class="nav navbar navbar-right">
           <li class="button"><%= link_to 'Schools', schools_path %></li>
         </ul>
         <ul class="nav navbar navbar-right">
@@ -67,6 +62,12 @@
         <ul class="nav navbar navbar-right">
           <li class="button"><%= link_to 'Scores', root_path %> </li>
         </ul>
+      <% else %>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Login', new_user_session_path %> </li>
+        </ul>
+        <% end %>
+
 
 
     </div>

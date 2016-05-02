@@ -17,7 +17,7 @@
          :Course.all specifies what in the Course table to include in the dropdown menu
          :id is primary key in the Course table
          :name is what attribute of the Course table will display in the menu-->
-    <%= f.collection_select(:course_id, Course.all, :id, :name ) %><br>
+    <%= f.collection_select(:course_id, Course.all, :id, :name ,{ include_blank: '- Select Course -' }) %><br>
     <em>Don't see your course? Click <%= link_to 'Here', new_course_path %> </em><br>
 
   </div>
