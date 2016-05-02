@@ -1,3 +1,42 @@
 <!DOCTYPE html>
-<h1> Hello </h1>
+
+<% if current_user %>
+<h1> Welcome <%= current_user.email %> </h1>
+<h3> You go to <%= current_user.school.name%> </h3>
+
+
+
+<table  class = "table table-striped">
+  <thead>
+    <tr>
+      <th>Difficulty rating</th>
+      <th>Workload rating</th>
+      <th>Likeability rating</th>
+      <th>Comment</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <h2> You have made <%= @scores.where(creator_id: current_user.id).count %> scores </h2>
+  <h3> Account created on <%= current_user.created_at.month %> / <%= current_user.created_at.day %> / <%= current_user.created_at.year %> </h3>
+
+<tbody>
+  <% @scores.each do |score | %>
+  <% if score.creator_id == current_user.id %>
+    <tr>
+      <td><%= score.difficulty_rating %></td>
+      <td><%= score.workload_rating %></td>
+      <td><%= score.likeability_rating %></td>
+      <td><%= score.comment %></td>
+      <td><%= score.course.name if score.course %></td>
+      <td><%= link_to 'Show', score %></td>
+      <td><%= link_to 'Edit', edit_score_path(score) %></td>
+      <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+    <% end %>
+</tbody>
+<%= link_to "Edit Account Info", edit_user_registration_path %>
+
+<% end %>
 </html>
