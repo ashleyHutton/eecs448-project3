@@ -20,7 +20,11 @@
          :Course.all specifies what in the Course table to include in the dropdown menu
          :id is primary key in the Course table
          :name is what attribute of the Course table will display in the menu-->
-    <%= f.collection_select(:school_id, School.all, :id, :name ) %><br>
+<<<<<<< HEAD
+  <!--  <%= f.collection_select(:school_id, School.all, :id, :name ) %><br>
+=======
+    <%= f.collection_select(:school_id, School.all, :id, :name { include_blank: '- Select School -' }) %><br>
+>>>>>>> course-average
     <em>Don't see your school? Click <%= link_to 'Here', new_school_path %> </em><br>
 
   </div> -->

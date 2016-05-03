@@ -24,7 +24,7 @@
          :School.all specifies what in the School table to include in the dropdown menu
          :id is primary key in the School table
          :name is what attribute of the School table will display in the menu-->
-    <%= f.collection_select(:school_id, School.all, :id, :name ) %><br><br>
+    <%= f.collection_select(:school_id, School.all, :id, :name { include_blank: '- Select School -' }) %><br><br>
     <%= f.submit "Sign up",:class=>'btn btn-primary' %>
     <!--<div class="field">
       <%= f.label :email %><br />
