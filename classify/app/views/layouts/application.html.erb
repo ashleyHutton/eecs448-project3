@@ -18,10 +18,10 @@
         </a>
       </div>
       <ul class="nav navbar navbar-right">
-        <li class="button"><%= link_to 'Profile', profile_path %> </li>
+        <li class="button"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
       </ul>
       <ul class="nav navbar navbar-right">
-        <li class="button"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
+        <li class="button"><%= link_to 'Profile', profile_path %> </li>
       </ul>
     </nav>
 
