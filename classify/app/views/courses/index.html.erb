@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-
 <div class="container">
+  <p id="notice"><%= notice %></p>
+
   <h2>
-    Courses at <%= current_user.school.name %>
+    Courses at <i><%= link_to  current_user.school.name, current_user.school %></i>
   </h2>
 
   <% totalRating = 0 %>
@@ -48,4 +47,6 @@
       </tbody>
     </table>
   </div>
+  <center><button type="button" class="btn btn-sm btn-default"><%= link_to 'Back to Profile', profile_path %></button> </center>
+
 </div>
