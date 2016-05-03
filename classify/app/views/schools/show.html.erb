@@ -1,9 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @school.name %>
-</p>
 
-<%= link_to 'Edit', edit_school_path(@school) %> |
-<%= link_to 'Back', schools_path %>
+<center> <h1> <i> <%= @school.name %> </i></h1>
+  <p><h5><%= @school.description %> </h5></p>
+</center>
+
+<h3> School Information </h3>
+
+<h5> Location:  <%= @school.address %> </h5>
+<h5>   Courses: <%= @school.courses.count %> </h5>
+<h5>  Classifiers at this School: </b> <%= User.where(school_id: @school.id).count %></h5>
+<center><%= image_tag"http://maps.googleapis.com/maps/api/staticmap?center=#{@school.latitude},#{@school.longitude}&zoom=15&scale=2&size=300x200&maptype=roadmap&key=AIzaSyDAKcqVkxybheZ6TliLppo3YI0_Z615yVs&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:#{@school.name}%7C#{@school.latitude},#{@school.longitude}"%> </center>
+
+<center> <h2> Rated Courses </h2> </center>
+<table class = "table table-striped">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th># of Scores</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <% @school.courses.each do |course| %>
+  <tr>
+
+    <td><%= link_to course.name, course %> </td>
+    <td> <%= course.scores.count %>
+
+  </tr>
+  <% end %>
+</table>
+<center><button type="button" class="btn btn-sm btn-default"><%= link_to 'Back', :back %></button> </center>

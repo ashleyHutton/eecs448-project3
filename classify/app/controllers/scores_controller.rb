@@ -2,12 +2,33 @@
 # Scores Controller
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: :new
 
   ##
   # GET /scores
   # GET /scores.json
   def index
     @scores = Score.all
+
+    @filterrific = initialize_filterrific(
+      Score,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Score.options_for_sorted_by,
+        with_course_id: Course.options_for_select
+      }
+    ) or return
+    @scores = @filterrific.find
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.js
+    end
+
+  rescue ActiveRecord::RecordNotFound => e
+    puts "Had to reset filterrific params: #{e.message}"
+    redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
   ##
@@ -19,6 +40,7 @@ class ScoresController < ApplicationController
   ##
   # GET /scores/new
   def new
+    @courses = Course.all
     @score = Score.new
   end
 
@@ -32,7 +54,7 @@ class ScoresController < ApplicationController
   # POST /scores.json
   def create
     @score = Score.new(score_params)
-
+    @score.creator_id = current_user.id
     respond_to do |format|
       if @score.save
         format.html { redirect_to @score, notice: 'Score was successfully created.' }
@@ -65,7 +87,7 @@ class ScoresController < ApplicationController
   def destroy
     @score.destroy
     respond_to do |format|
-      format.html { redirect_to scores_url, notice: 'Score was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Score was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,6 +102,6 @@ class ScoresController < ApplicationController
     ##
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:difficulty_rating, :workload_rating, :likeability_rating, :comment, :course_id)
+      params.require(:score).permit(:difficulty_rating, :workload_rating, :likeability_rating, :comment, :course_id, :creator_id)
     end
 end

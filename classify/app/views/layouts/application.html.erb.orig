@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Classify</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body id="bootstrap-overrides">
+  <% if user_signed_in?%>
+    <!-- Navbar -->
+    <nav class = "navbar navbar-ct-transparent">
+      <div class="navbar-header">
+        <a>
+          <%= link_to image_tag('classify_logo_v4.png', width: '210', height: '60', alt: 'Molecular structure of Buckminsterfullerene'), root_path, title: 'Buckminsterfullerene', rel: 'tooltip', relative: true %>
+        </a>
+      </div>
+
+      <ul class="nav navbar navbar-right">
+        <li class="button"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
+      </ul>
+    </nav>
+
+    <div class = "container">
+      <%= yield %>
+    </div>
+
+  <% else %>
+
+    <%= yield %>
+
+  <% end %>
+
+
+    <!--<div class = "container"> -->
+
+        <!-- Prelude logo -->
+      <!--  <% if current_user %>
+          <div class="navbar-header">
+            <a>
+              <!--<h2><%= link_to 'Classify', root_path %></h2>
+              -->
+            <!--  <%= link_to image_tag('classify_logo_v3.png', width: '210', height: '60', alt: 'Molecular structure of Buckminsterfullerene'), root_path, title: 'Buckminsterfullerene', rel: 'tooltip', relative: true %>
+            </a>
+          </div>
+        <% end %>
+
+        <% if current_user %>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
+        </ul>
+<<<<<<< HEAD
+      <!--</div> -->
+
+    <!--  <% else %>
+      <!--
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Login', new_user_session_path %> </li>
+        </ul>
+        <ul class="nav navbar navbar-right">
+           <li class="button"><%= link_to 'Schools', schools_path %></li>
+         </ul>
+         <ul class="nav navbar navbar-right">
+           <li class="button"><%= link_to 'Courses', courses_path %></li>
+         </ul>
+         <ul class="nav navbar navbar-right">
+           <li class="button"><%= link_to 'Scores', root_path %> </li>
+         </ul> -->
+=======
+               <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Schools', schools_path %></li>
+        </ul>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Courses', courses_path %></li>
+        </ul>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Scores', root_path %> </li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar navbar-right">
+          <li class="button"><%= link_to 'Login', new_user_session_path %> </li>
+        </ul>
+        <% end %>
+
+>>>>>>> course-average
+
+    <!--     <ul class="nav navbar navbar-right">
+           <li class="button"><%= link_to 'Login', new_user_session_path %> </li>
+         </ul>
+
+         <div class="jumbotron">
+           <div class="container">
+             <h1>Hello, world!</h1>
+             <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+             <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+           </div>
+         </div>
+
+         <div class="container">
+           <!-- Example row of columns -->
+      <!--     <div class="row">
+             <div class="col-md-4">
+               <h2>Heading</h2>
+               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+             </div>
+
+           </div>
+         </div>
+         <!--</div> -->
+<!--       <% end %>
+
+    </div>
+  </nav>
+
+-->
+
+
+
+
+</body>
+</html>

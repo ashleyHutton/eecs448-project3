@@ -1,6 +1,5 @@
 <h2>Editing Score</h2>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @score %> |
-<%= link_to 'Back', scores_path %>
+<button type="button" class="btn btn-sm btn-default"><%= link_to 'Show', @score %></button>
+<button type="button" class="btn btn-sm btn-default"><%= link_to 'Back', :back %></button>

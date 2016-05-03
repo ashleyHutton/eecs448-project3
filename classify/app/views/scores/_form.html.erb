@@ -12,6 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :course_id %><br>
+    <!-- :course_id is foreign key in Scores table,
+         :Course.all specifies what in the Course table to include in the dropdown menu
+         :id is primary key in the Course table
+         :name is what attribute of the Course table will display in the menu-->
+    <%= f.collection_select(:course_id, Course.all, :id, :name ,{ include_blank: '- Select Course -' }) %><br>
+    <em>Don't see your course? Click <%= link_to 'Here', new_course_path %> </em><br>
+
+  </div>
+  <div class="field">
     <%= f.label :difficulty_rating %><br>
     <%= f.number_field :difficulty_rating %>
   </div>
@@ -27,10 +37,7 @@
     <%= f.label :comment %><br>
     <%= f.text_field :comment %>
   </div>
-  <div class="field">
-    <%= f.label :course_id %><br>
-    <%= f.number_field :course_id %>
-  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
