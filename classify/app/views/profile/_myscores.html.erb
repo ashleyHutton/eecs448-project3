@@ -21,9 +21,10 @@
       <td><%= score.likeability_rating %></td>
       <td><%= score.comment %></td>
       <td><%= score.course.name if score.course %></td>
-      <td><%= link_to 'Show', score %></td>
-      <td><%= link_to 'Edit', edit_score_path(score) %></td>
-      <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Show', score %></button></td>
+      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Edit', edit_score_path(score) %></button></td>
+      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' }  %></button></td>
+
     </tr>
     <% end %>
     <% end %>

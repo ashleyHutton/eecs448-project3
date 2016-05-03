@@ -12,7 +12,8 @@
     <%= f.collection_select(:school_id, School.all, :id, :name ) %>
 
     <div class="actions">
-      <%= f.submit "Change School"%>
+      
+      <%= f.submit "Change School", :class => "btn btn-sm btn-default" %>
     </div>
   <% end %>
 

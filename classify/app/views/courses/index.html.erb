@@ -20,7 +20,7 @@
         <tr>
           <td><%= course.name %></td>
           <td><%= course.school.name if course.school%></td>
-          <td><%= link_to 'Show', course %></td>
+          <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Show', course %></button></td>
         <!--  <<td><%= link_to 'Edit', edit_course_path(course) %></td> -->
           <!--<td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
         </tr>
