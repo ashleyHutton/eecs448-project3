@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root to: 'scores#index'
   get 'profile' => 'profile#my_profile'
-  post 'profile' => 'profile#edit_school'
+  post 'profile' => 'profile#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
