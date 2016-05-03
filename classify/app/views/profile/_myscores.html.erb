@@ -1,0 +1,30 @@
+<center><h2> My Scores </h2> </center>
+
+<table  class = "table table-striped">
+  <thead>
+    <tr>
+      <th>Difficulty rating</th>
+      <th>Workload rating</th>
+      <th>Likeability rating</th>
+      <th>Comment</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+  <% @scores.each do |score | %>
+  <% if score.creator_id == current_user.id %>
+    <tr>
+      <td><%= score.difficulty_rating %></td>
+      <td><%= score.workload_rating %></td>
+      <td><%= score.likeability_rating %></td>
+      <td><%= score.comment %></td>
+      <td><%= score.course.name if score.course %></td>
+      <td><%= link_to 'Show', score %></td>
+      <td><%= link_to 'Edit', edit_score_path(score) %></td>
+      <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+    <% end %>
+</tbody>

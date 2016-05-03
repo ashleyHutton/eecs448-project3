@@ -5,6 +5,7 @@
   <p><h5><%= @school.description %> </h5></p>
 
 <h4><b> Location: </b> <%= @school.address %> </h4>
+<h3> <b> Students in this school: </b> <%= User.where(school_id: @school.id).count %></h3>
 <center><%= image_tag"http://maps.googleapis.com/maps/api/staticmap?center=#{@school.latitude},#{@school.longitude}&zoom=15&scale=2&size=300x200&maptype=roadmap&key=AIzaSyDAKcqVkxybheZ6TliLppo3YI0_Z615yVs&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:#{@school.name}%7C#{@school.latitude},#{@school.longitude}"%> </center>
 
 <h2> List of Classes (<%= Course.where(school_id: @school.id).count %>)</h2>

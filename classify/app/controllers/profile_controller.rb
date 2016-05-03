@@ -6,12 +6,8 @@ before_action :set_user
   @scores = Score.all
   end
 
-  def edit_school
-
-  end
-
-  def set_user
-    @user = User.where(id: current_user.id)
+    def set_user
+    @user =  User.where(id: current_user.id).first
   end
 
 end

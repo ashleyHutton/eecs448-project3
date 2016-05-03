@@ -1,47 +1,29 @@
 <!DOCTYPE html>
+  <center>
+    <h1> Welcome <i><%= current_user.full_name %> </i></h1>
+  </center>
 
-<center>
-<% if current_user %>
-<h1> Welcome <%= current_user.email %> </h1>
-</center>
-<h3> My School: <%= current_user.school.name%> </h3>
+  <h3> Personal Information </h3>
+  <h5> Name: <%= current_user.full_name %> </h5>
+  <h5> My School: <%= link_to  current_user.school.name, current_user.school %> </h5>
 
-<h3> Acount Details </h3>
- Account created on <%= current_user.created_at.month %> / <%= current_user.created_at.day %> / <%= current_user.created_at.year %>
-  <br><%= link_to "Edit Account Info", edit_user_registration_path %>
-  <center><h3> My Scores (<%= @scores.where(creator_id: current_user.id).count %> ) </h3> </center>
+  <%= form_for(:user) do |f| %>
 
-<table  class = "table table-striped">
-  <thead>
-    <tr>
-      <th>Difficulty rating</th>
-      <th>Workload rating</th>
-      <th>Likeability rating</th>
-      <th>Comment</th>
-      <th>Course</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <%= f.collection_select(:school_id, School.all, :id, :name ) %>
+
+    <div class="actions">
+      <%= f.submit "Change School"%>
+    </div>
+  <% end %>
+
+  <h5> Scores Made: <%= Score.where(creator_id: current_user.id).count %></h5>
 
 
+  <h3> Account Details </h3>
+  <h5> Email: <%= current_user.email %> </h5>
+  <h5> Last time logged in: <%= current_user.last_sign_in_at.month %> / <%= current_user.last_sign_in_at.day %> / <%= current_user.last_sign_in_at.year %>
+  <h5><%= link_to "Edit Account Info", edit_user_registration_path %> </h5>
 
-<tbody>
-  <% @scores.each do |score | %>
-  <% if score.creator_id == current_user.id %>
-    <tr>
-      <td><%= score.difficulty_rating %></td>
-      <td><%= score.workload_rating %></td>
-      <td><%= score.likeability_rating %></td>
-      <td><%= score.comment %></td>
-      <td><%= score.course.name if score.course %></td>
-      <td><%= link_to 'Show', score %></td>
-      <td><%= link_to 'Edit', edit_score_path(score) %></td>
-      <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-    <% end %>
-</tbody>
+  <%= render 'myscores' %>
 
-
-<% end %>
 </html>
