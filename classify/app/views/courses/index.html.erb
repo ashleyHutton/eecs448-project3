@@ -1,48 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<h2>
-  Courses
-</h2>
 
-<% totalRating = 0 %>
-<% diff_rating = 0 %>
-<% work_rating = 0 %>
-<% like_rating = 0 %>
+<div class="container">
+  <h2>
+    Courses at <%= current_user.school.name %>
+  </h2>
 
-<div class = "table">
-  <table class = "table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>School</th>
-        <th>Average Difficulty rating</th>
-        <th>Average Workload rating</th>
-        <th>Average Likeability rating</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <% totalRating = 0 %>
+  <% diff_rating = 0 %>
+  <% work_rating = 0 %>
+  <% like_rating = 0 %>
 
-    <tbody>
-      <% @courses.each do |course| %>
+  <div class = "table">
+    <table class = "table table-striped">
+      <thead>
         <tr>
-          <td><%= course.name %></td>
-
-          <td><%= course.school.name if course.school %></td>
-          <% course.scores.each do |score| %>
-            <% diff_rating += score.difficulty_rating %>
-            <% work_rating += score.workload_rating %>
-            <% like_rating += score.likeability_rating %>
-            <% totalRating = totalRating + 1 %>
-          <% end %>
-          <td><%= diff_rating / totalRating %></td>
-          <td><%= work_rating / totalRating %></td>
-          <td><%= like_rating / totalRating %></td>
-          <td><%= course.school.name if course.school%></td>
-          <td><%= link_to 'Show', course %></td>
-          <td><%= link_to 'Edit', edit_course_path(course) %></td>
-          <!--<td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          <th>Name</th>
+          <!--<th>School</th>-->
+          <th>Average Difficulty rating</th>
+          <th>Average Workload rating</th>
+          <th>Average Likeability rating</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+            <td><%= course.name %></td>
+
+            <!--<td><%= course.school.name if course.school %></td>-->
+            <% course.scores.each do |score| %>
+              <% diff_rating += score.difficulty_rating %>
+              <% work_rating += score.workload_rating %>
+              <% like_rating += score.likeability_rating %>
+              <% totalRating = totalRating + 1 %>
+            <% end %>
+            <td><%= diff_rating / totalRating %></td>
+            <td><%= work_rating / totalRating %></td>
+            <td><%= like_rating / totalRating %></td>
+            <!--<td><%= course.school.name if course.school%></td>-->
+            <td><%= link_to 'See Scores', course %></td>
+            <!--<td><%= link_to 'Edit', edit_course_path(course) %></td>-->
+            <!--<td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
