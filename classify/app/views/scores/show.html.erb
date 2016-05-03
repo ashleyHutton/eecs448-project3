@@ -1,30 +1,40 @@
 <p id="notice"><%= notice %></p>
 
+<center>
+  <h1> <i><%= @score.course.name %></i> at <i><%= link_to  @score.course.school.name, @score.course.school %></i></h1>
+</center>
 
 <p>
-  <strong>Difficulty rating:</strong>
+<h4>  <strong>Difficulty rating:</strong>
   <%= @score.difficulty_rating %>
+</h4>
 </p>
 
 <p>
-  <strong>Workload rating:</strong>
-  <%= @score.workload_rating %>
+  <h4> <strong>Workload rating:</strong>
+    <%= @score.workload_rating %>
+  </h4>
 </p>
 
 <p>
+  <h4>
   <strong>Likeability rating:</strong>
   <%= @score.likeability_rating %>
+</h4>
 </p>
 
 <p>
+  <h4>
   <strong>Comment:</strong>
   <%= @score.comment %>
+</h4>
 </p>
+<br>
 
-<p>
-  <strong>Course:</strong>
-  <%= @score.course.name %>
-</p>
+<center> <h4> <%= link_to "Check out this course's other ratings!", @score.course %>
 
-<%= link_to 'Edit', edit_score_path(@score) %> |
-<%= link_to 'Back', scores_path %>
+</h4>
+<center>
+<button type="button" class="btn btn-sm btn-default"><%= link_to 'Edit', edit_score_path(@score)  %></button>
+<button type="button" class="btn btn-sm btn-default"><%= link_to 'Back', :back %></button>
+</center>

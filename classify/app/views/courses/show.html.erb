@@ -1,14 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<center>
+  <h1> <i><%= @course.name %></i> at <i><%= link_to  @course.school.name, @course.school %></i></h1>
+</center>
 
-<p>
-  <strong>School:</strong>
-  <%= @course.school.name %>
-</p>
 <table class = "table table-striped">
   <thead>
   <tr>
@@ -28,11 +23,11 @@
     <td> <center> <%= score.workload_rating %> </center></td>
     <td> <center><%= score.likeability_rating %></center> </td>
     <td> <%= truncate(score.comment, :length => 30) %> </td>
-    <td> <center><%=  link_to 'View', score %> </center> </td>
+    <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'View', score %></button></td>
   </tr>
   <% end %>
 
 
 </table>
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<!--<%= link_to 'Edit', edit_course_path(@course) %> | -->
+<center><button type="button" class="btn btn-sm btn-default"><%= link_to 'Back', :back %></button> </center>

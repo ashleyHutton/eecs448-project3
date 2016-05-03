@@ -54,7 +54,7 @@ class ScoresController < ApplicationController
   # POST /scores.json
   def create
     @score = Score.new(score_params)
-
+    @score.creator_id = current_user.id
     respond_to do |format|
       if @score.save
         format.html { redirect_to @score, notice: 'Score was successfully created.' }
@@ -87,7 +87,7 @@ class ScoresController < ApplicationController
   def destroy
     @score.destroy
     respond_to do |format|
-      format.html { redirect_to scores_url, notice: 'Score was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Score was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -102,6 +102,6 @@ class ScoresController < ApplicationController
     ##
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:difficulty_rating, :workload_rating, :likeability_rating, :comment, :course_id)
+      params.require(:score).permit(:difficulty_rating, :workload_rating, :likeability_rating, :comment, :course_id, :creator_id)
     end
 end

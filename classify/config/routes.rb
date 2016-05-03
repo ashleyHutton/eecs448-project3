@@ -9,9 +9,12 @@ Rails.application.routes.draw do
 
   root to: 'scores#index'
 
+
   devise_scope :user do
     get 'users/sign_out' => "devise/sessions#destroy"
   end
+  get 'profile' => 'profile#my_profile'
+  post 'profile' => 'profile#update'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
