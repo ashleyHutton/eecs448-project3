@@ -1,5 +1,18 @@
+<!-- Navbar -->
+<nav class = "navbar navbar-ct-transparent">
+  <div class="navbar-header">
+    <a>
+      <%= link_to image_tag('classify_logo_v4.png', width: '210', height: '60', alt: 'Molecular structure of Buckminsterfullerene'), root_path, title: 'Buckminsterfullerene', rel: 'tooltip', relative: true %>
+    </a>
+  </div>
+
+  <ul class="nav navbar navbar-right">
+    <li class="button"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
+  </ul>
+</nav>
+
 <div class = "border-form-div">
-  <center><h2>Sign up</h2></center>
+  <center><h2>Welcome</h2></center>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 

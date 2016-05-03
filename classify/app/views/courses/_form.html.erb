@@ -1,4 +1,7 @@
 <%= form_for(@course) do |f| %>
+
+  <center><h2>New Course <br></h2></center>
+
   <% if @course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -11,16 +14,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+<!--  <div class="field">
     <%= f.label :school_id %><br>
     <!-- :course_id is foreign key in Scores table,
          :Course.all specifies what in the Course table to include in the dropdown menu
          :id is primary key in the Course table
          :name is what attribute of the Course table will display in the menu-->
-    <%= f.collection_select(:school_id, School.all, :id, :name ) %><br>
+  <!--  <%= f.collection_select(:school_id, School.all, :id, :name ) %><br>
     <em>Don't see your school? Click <%= link_to 'Here', new_school_path %> </em><br>
 
-  </div>
+  </div> -->
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
