@@ -9,6 +9,7 @@ class Score < ActiveRecord::Base
 
 	belongs_to :course
 
+	validates :course_id, presence: true
 	validates_inclusion_of		:difficulty_rating, :in => 1..5
 	validates_inclusion_of		:likeability_rating, :in => 1..5
 	validates_inclusion_of		:workload_rating, :in => 1..5
@@ -54,7 +55,7 @@ class Score < ActiveRecord::Base
 		    *terms.map { |e| [e] * num_or_conds }.flatten
 		  )
 	  }
-	  
+
 	  scope :sorted_by, lambda { |sort_option|
 			# extract the sort direction from the param value.
 			direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'

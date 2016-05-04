@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class SchoolsControllerTest < ActionController::TestCase
+=begin
   setup do
     @school = schools(:one)
   end
@@ -46,4 +47,5 @@ class SchoolsControllerTest < ActionController::TestCase
 
     assert_redirected_to schools_path
   end
+=end
 end
