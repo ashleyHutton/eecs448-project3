@@ -1,34 +1,50 @@
-<p id="notice"><%= notice %></p>
 
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<center> <h1> <i> <%= @school.name %> </i></h1>
+  <h1> <%= @school.name %></h1>
   <p><h5><%= @school.description %> </h5></p>
-</center>
 
-<h3> School Information </h3>
 
-<h5> Location:  <%= @school.address %> </h5>
-<h5>   Courses: <%= @school.courses.count %> </h5>
-<h5>  Classifiers at this School: </b> <%= User.where(school_id: @school.id).count %></h5>
-<center><%= image_tag"http://maps.googleapis.com/maps/api/staticmap?center=#{@school.latitude},#{@school.longitude}&zoom=15&scale=2&size=300x200&maptype=roadmap&key=AIzaSyDAKcqVkxybheZ6TliLppo3YI0_Z615yVs&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:#{@school.name}%7C#{@school.latitude},#{@school.longitude}"%> </center>
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-transparent">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          School Information &raquo;
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div id="shift-contents-right">
+        <h5> Location:  <%= @school.address %> </h5>
+        <h5>   Courses: <%= @school.courses.count %> </h5>
+        <h5>  Classifiers at this School: </b> <%= User.where(school_id: @school.id).count %></h5>
+        <center><%= image_tag"http://maps.googleapis.com/maps/api/staticmap?center=#{@school.latitude},#{@school.longitude}&zoom=15&scale=2&size=225x150&maptype=roadmap&key=AIzaSyDAKcqVkxybheZ6TliLppo3YI0_Z615yVs&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:#{@school.name}%7C#{@school.latitude},#{@school.longitude}"%> </center>
 
-<center> <h2> Rated Courses </h2> </center>
-<table class = "table table-striped">
-  <thead>
+      </div>
+    </div>
+  </div>
+
+
+  <h2> Rated Courses </h2>
+  <table class = "table table-striped">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th># of Scores</th>
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+
+    <% @school.courses.each do |course| %>
     <tr>
-      <th>Course</th>
-      <th># of Scores</th>
-      <th colspan="5"></th>
+
+      <td><%= link_to course.name, course %> </td>
+      <td> <%= course.scores.count %>
+
     </tr>
-  </thead>
-
-  <% @school.courses.each do |course| %>
-  <tr>
-
-    <td><%= link_to course.name, course %> </td>
-    <td> <%= course.scores.count %>
-
-  </tr>
-  <% end %>
-</table>
-<center><button type="button" class="btn btn-sm btn-default"><%= link_to 'Back', :back %></button> </center>
+    <% end %>
+  </table>
+  <center><button type="button" class="btn btn-sm btn-default"><%= link_to 'Back to Profile', profile_path %></button> </center>
+</div>

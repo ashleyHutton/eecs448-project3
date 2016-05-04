@@ -1,15 +1,15 @@
-class RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
 private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :school_id, :current_password, :full_name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :school_id)
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :school_id, :current_password)
+    params.require(:user).permit(:email, :password, :password_confirmation, :school_id)
   end
   # GET /resource/sign_up
   # def new

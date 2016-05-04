@@ -1,4 +1,7 @@
-<center><h2> My Scores </h2> </center>
+<h2 id="shift-contents-right-header">
+  My Scores at <i><%= link_to  @user.school.name, @user.school %></i>
+  <button type="button" class="btn btn-sm btn-default"><%= link_to 'New Score', new_score_path %></button>
+</h2>
 
 <table  class = "table table-striped">
   <thead>

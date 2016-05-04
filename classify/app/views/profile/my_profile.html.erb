@@ -1,30 +1,80 @@
 <!DOCTYPE html>
   <center>
-    <h1> Welcome <i><%= current_user.full_name %> </i></h1>
+    <!--<h1> Welcome <i><%= current_user.full_name %> </i></h1>-->
   </center>
+  <div class="container">
 
-  <h3> Personal Information </h3>
-  <h5> Name: <%= current_user.full_name %> </h5>
-  <h5> My School: <%= link_to  current_user.school.name, current_user.school %> </h5>
 
-  <%= form_for(:user) do |f| %>
 
-    <%= f.collection_select(:school_id, School.all, :id, :name ) %>
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-transparent">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Personal Information &raquo;
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div id="shift-contents-right">
+          <h5> Name: <%= current_user.full_name %> </h5>
+          <h5> My School: <%= link_to  current_user.school.name, current_user.school %> </h5>
 
-    <div class="actions">
-      
-      <%= f.submit "Change School", :class => "btn btn-sm btn-default" %>
+          <%= form_for(:user) do |f| %>
+
+            <%= f.collection_select(:school_id, School.all, :id, :name ) %>
+
+            <div class="actions">
+
+              <%= f.submit "Change School", :class => "btn btn-sm btn-default" %>
+            </div>
+          <% end %>
+
+          <h5> Scores Made: <%= Score.where(creator_id: current_user.id).count %></h5>
+        </div>
+      </div>
     </div>
-  <% end %>
+    <div class="panel panel-transparent">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Account Details &raquo;
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div id="shift-contents-right">
+          <h5> Email: <%= current_user.email %> </h5>
+          <h5> Last time logged in: <%= current_user.last_sign_in_at.month %> / <%= current_user.last_sign_in_at.day %> / <%= current_user.last_sign_in_at.year %>
+          <h5><%= link_to "Edit Account Info", edit_user_registration_path %> </h5>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <h5> Scores Made: <%= Score.where(creator_id: current_user.id).count %></h5>
+  <!--  <h3> Personal Information </h3>
+    <h5> Name: <%= current_user.full_name %> </h5>
+    <h5> My School: <%= link_to  current_user.school.name, current_user.school %> </h5>
+
+    <%= form_for(:user) do |f| %>
+
+      <%= f.collection_select(:school_id, School.all, :id, :name ) %>
+
+      <div class="actions">
+
+        <%= f.submit "Change School", :class => "btn btn-sm btn-default" %>
+      </div>
+    <% end %>
+
+    <h5> Scores Made: <%= Score.where(creator_id: current_user.id).count %></h5>
 
 
-  <h3> Account Details </h3>
-  <h5> Email: <%= current_user.email %> </h5>
-  <h5> Last time logged in: <%= current_user.last_sign_in_at.month %> / <%= current_user.last_sign_in_at.day %> / <%= current_user.last_sign_in_at.year %>
-  <h5><%= link_to "Edit Account Info", edit_user_registration_path %> </h5>
+    <h3> Account Details </h3>
+    <h5> Email: <%= current_user.email %> </h5>
+    <h5> Last time logged in: <%= current_user.last_sign_in_at.month %> / <%= current_user.last_sign_in_at.day %> / <%= current_user.last_sign_in_at.year %>
+    <h5><%= link_to "Edit Account Info", edit_user_registration_path %> </h5> -->
 
-  <%= render 'myscores' %>
+    <%= render 'myscores' %>
+  </div>
 
 </html>
