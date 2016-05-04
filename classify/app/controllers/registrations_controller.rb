@@ -9,7 +9,7 @@ private
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :school_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :school_id, :current_password)
   end
   # GET /resource/sign_up
   # def new

@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class CourseTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should not save course" do
+  course = course.new
+  course.name = "Programming"
+  assert !course.valid?
+
+  end
 end

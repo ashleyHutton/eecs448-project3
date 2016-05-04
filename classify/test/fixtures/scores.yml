@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  difficulty_rating: 1
-  workload_rating: 1
-  likeability_rating: 1
-  comment: 
+  difficulty_rating: 4
+  workload_rating: 3
+  likeability_rating: 5
+  comment: Awesome
   course_id: 1
 
 two:
-  difficulty_rating: 1
-  workload_rating: 1
-  likeability_rating: 1
-  comment: 
-  course_id: 1
+  difficulty_rating: 3
+  workload_rating: 4
+  likeability_rating: 5
+  comment: This class
+  course_id: 2

@@ -23,7 +23,7 @@
       <td><%= score.course.name if score.course %></td>
       <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Show', score %></button></td>
       <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Edit', edit_score_path(score) %></button></td>
-      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' }  %></button></td>
+      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Destroy', score,  method: :delete, data: { confirm: 'Are you sure?' }  %></button></td>
 
     </tr>
     <% end %>
