@@ -29,13 +29,13 @@
             <td><%= course.name %></td>
 
             <!--<td><%= course.school.name if course.school %></td>-->
-            <% if course.scores %>
-              <% course.scores.each do |score| %>
-                <% diff_rating += score.difficulty_rating %>
-                <% work_rating += score.workload_rating %>
-                <% like_rating += score.likeability_rating %>
-                <% totalRating = totalRating + 1 %>
-              <% end %>
+            <% course.scores.each do |score| %>
+              <% diff_rating += score.difficulty_rating %>
+              <% work_rating += score.workload_rating %>
+              <% like_rating += score.likeability_rating %>
+              <% totalRating = totalRating + 1 %>
+            <% end %>
+            <% if totalRating > 0 %>
               <td><%= diff_rating / totalRating %></td>
               <td><%= work_rating / totalRating %></td>
               <td><%= like_rating / totalRating %></td>
