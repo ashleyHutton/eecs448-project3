@@ -39,6 +39,10 @@
               <td><%= diff_rating / totalRating %></td>
               <td><%= work_rating / totalRating %></td>
               <td><%= like_rating / totalRating %></td>
+            <% else %>
+              <td> N/A </td>
+              <td> N/A </td>
+              <td> N/A </td>
             <% end %>
             <!--<td><%= course.school.name if course.school%></td>-->
             <td><%= link_to 'See Scores', course %></td>
