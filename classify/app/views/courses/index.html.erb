@@ -29,15 +29,17 @@
             <td><%= course.name %></td>
 
             <!--<td><%= course.school.name if course.school %></td>-->
-            <% course.scores.each do |score| %>
-              <% diff_rating += score.difficulty_rating %>
-              <% work_rating += score.workload_rating %>
-              <% like_rating += score.likeability_rating %>
-              <% totalRating = totalRating + 1 %>
+            <% if course.scores %>
+              <% course.scores.each do |score| %>
+                <% diff_rating += score.difficulty_rating %>
+                <% work_rating += score.workload_rating %>
+                <% like_rating += score.likeability_rating %>
+                <% totalRating = totalRating + 1 %>
+              <% end %>
+              <td><%= diff_rating / totalRating %></td>
+              <td><%= work_rating / totalRating %></td>
+              <td><%= like_rating / totalRating %></td>
             <% end %>
-            <td><%= diff_rating / totalRating %></td>
-            <td><%= work_rating / totalRating %></td>
-            <td><%= like_rating / totalRating %></td>
             <!--<td><%= course.school.name if course.school%></td>-->
             <td><%= link_to 'See Scores', course %></td>
             <!--<td><%= link_to 'Edit', edit_course_path(course) %></td>-->
