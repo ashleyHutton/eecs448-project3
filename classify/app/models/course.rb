@@ -7,7 +7,7 @@ class Course < ActiveRecord::Base
 	has_many :scores
 	belongs_to :school
 
-	validates_uniqueness_of :name
+	#validates_uniqueness_of :name
 
 	filterrific(
 		  default_filter_params: { sorted_by: 'name_desc' },

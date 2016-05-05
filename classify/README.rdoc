@@ -32,3 +32,5 @@ USE THIS TO DEPLOY TO HERO-KU
 you need to run this from the root of the repo
 git subtree push --prefix classify heroku master
 ------------------------------------
+USE THIS TO ADD STUFF TO DB
+heroku run bundle exec rails c production
