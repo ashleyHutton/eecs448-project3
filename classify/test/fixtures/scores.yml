@@ -1,15 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  difficulty_rating: 4
-  workload_rating: 3
-  likeability_rating: 5
-  comment: Awesome
-  course_id: 1
 
-two:
-  difficulty_rating: 3
+algebra:
+  difficulty_rating: 4
   workload_rating: 4
   likeability_rating: 5
-  comment: This class
+  comment: This class was tough but I really liked it
+  course_id: 1
+
+chemistry:
+  difficulty_rating: 3
+  workload_rating: 3
+  likeability_rating: 3
+  comment: This class was average.
   course_id: 2

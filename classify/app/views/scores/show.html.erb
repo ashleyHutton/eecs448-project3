@@ -1,40 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<center>
-  <h1> <i><%= @score.course.name %></i> at <i><%= link_to  @score.course.school.name, @score.course.school %></i></h1>
-</center>
+<div class="border-form-div">
+  <center>
+    <h2> Your score for<%= @score.course.name %></h2>
+    <h4> at <i><%= link_to  @score.course.school.name, @score.course.school %></i></h4>
+  </center>
+  <br>
 
-<p>
-<h4>  <strong>Difficulty rating:</strong>
-  <%= @score.difficulty_rating %>
-</h4>
-</p>
+  <%= form_for(@score) do |f| %>
 
-<p>
-  <h4> <strong>Workload rating:</strong>
-    <%= @score.workload_rating %>
-  </h4>
-</p>
+    <div class="field">
+      <%= f.label :difficulty_rating %>:
+      <%= f.label @score.difficulty_rating %>
+    </div>
 
-<p>
-  <h4>
-  <strong>Likeability rating:</strong>
-  <%= @score.likeability_rating %>
-</h4>
-</p>
+    <div class="field">
+      <%= f.label :workload_rating %>:
+      <%= f.label @score.workload_rating %>
+    </div>
 
-<p>
-  <h4>
-  <strong>Comment:</strong>
-  <%= @score.comment %>
-</h4>
-</p>
-<br>
+    <div class="field">
+      <%= f.label :likeability_rating %>:
+      <%= f.label @score.likeability_rating %>
+    </div>
 
-<center> <h4> <%= link_to "Check out this course's other ratings!", @score.course %>
+    <div class="field">
+      <%= f.label :comment %>:
+      <%= f.label @score.comment %>
+    </div>
+  <% end %>
 
-</h4>
-<center>
-<button type="button" class="btn btn-sm btn-default"><%= link_to 'Edit', edit_score_path(@score)  %></button>
-<button type="button" class="btn btn-sm btn-default"><%= link_to 'Back', :back %></button>
-</center>
+
+
+
+  <center> <h6><i> <%= link_to "Check out this course's other ratings!", @score.course %> </i></h6> </center>
+
+  <button type="button" class="btn btn-sm btn-default"><%= link_to 'Edit', edit_score_path(@score)  %></button>
+  <button type="button" class="btn btn-sm btn-default"><%= link_to 'Back to Provile', profile_path %></button>
+  </center>
+</div>
