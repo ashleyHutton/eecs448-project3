@@ -17,8 +17,9 @@
 
 <tbody>
   <% @scores.each do |score | %>
-  <% if score.creator_id == current_user.id %>
+  <% if score.creator_id == current_user.id && score.course.school == current_user.school %>
     <tr>
+
       <td><%= score.difficulty_rating %></td>
       <td><%= score.workload_rating %></td>
       <td><%= score.likeability_rating %></td>
