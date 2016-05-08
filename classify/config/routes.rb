@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :courses, only: [:index, :show]
   resources :scores
-  resources :schools, only: [:index, :show]
+  resources :schools, only: [:show]
 
   root to: 'scores#index'
 
