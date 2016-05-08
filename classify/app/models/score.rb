@@ -29,8 +29,6 @@ class Score < ActiveRecord::Base
 			# extract the sort direction from the param value.
 			direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
 			case sort_option.to_s
-				#when /^name_/
-				#order("scores.name #{direction}")
 				when /^created_at_/
 				# Simple sort on the created_at column.
 				# Make sure to include the table name to avoid ambiguous column names.
@@ -41,9 +39,6 @@ class Score < ActiveRecord::Base
 				# Simple sort on the name colums
 				order("(scores.difficulty_rating) #{ direction }, (scores.likeability_rating) #{ direction }, (scores.workload_rating) #{ direction}")
 				when /^course_name_/
-					# This sorts by a student's country name, so we need to include
-					# the country. We can't use JOIN since not all students might have
-					# a country.
 					order("(courses.name) #{ direction }").includes(:courses)
 				#when /^school_name_/
 					#order("(schools.name) #{ direction }").includes(:schools)
@@ -55,25 +50,15 @@ class Score < ActiveRecord::Base
 
 	  scope :with_course_id, lambda { |course_ids|
 	    # Filters scores with any of the given course_ids
-	    where(course_id: [Course.where(school_id: current_user.school_id)])
-	    
+	   	where(course_id: [course_ids.where(school_id: current_user.school_id)])
 	  }
-	 # scope :with_school_id, lambda { |school_ids|
-	    # Filters scores with any of the given school_ids
-	 #   where(school_id: [*school_ids])
-	 # }
-	  #scope :with_created_at_gte, lambda { |ref_date|
-	  #  ...
-	  #}
 
 	  # This method provides select options for the `sorted_by` filter select input.
 	  # It is called in the controller as part of `initialize_filterrific`.
 	  def self.options_for_sorted_by
 	    [
-	      #['Name (a-z)', 'name_asc'],
 	      ['Newest Scores', 'created_at_desc'],
 	      ['Oldest Scores', 'created_at_asc'],
-	      #['Course (a-z)', 'course_name_asc']
 	    ]
 	  end
 
