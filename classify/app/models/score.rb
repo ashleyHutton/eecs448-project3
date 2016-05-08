@@ -21,40 +21,9 @@ class Score < ActiveRecord::Base
 	  default_filter_params: { sorted_by: 'created_at_desc' },
 	  available_filters: [
 	    :sorted_by,
-	    :search_query,
 	    :with_course_id,
-	    #:with_school_id,
-	    #:with_created_at_gte
 	  ]
 	)
-
-
-	  # Scope definitions. We implement all Filterrific filters through ActiveRecord
-	  # scopes. In this example we omit the implementation of the scopes for brevity.
-	  # Please see 'Scope patterns' for scope implementation details.
-	  scope :search_query, lambda { |query|
-
-		  return nil  if query.blank?
-
-		  # condition query, parse into individual keywords
-		  terms = query.downcase.split(/\s+/)
-
-		  # replace "*" with "%" for wildcard searches,
-		  # append '%', remove duplicate '%'s
-		  terms = terms.map { |e|
-		    (e.gsub('*', '%') + '%').gsub(/%+/, '%')
-		  }
-		  # configure number of OR conditions for provision
-		  # of interpolation arguments. Adjust this if you
-		  # change the number of OR conditions.
-		  num_or_conds = 3
-		  where(
-		    terms.map { |term|
-		      "((scores.difficulty_rating) LIKE ? OR (scores.likeability_rating) LIKE ? OR (scores.workload_rating) LIKE ?)"
-		    }.join(' AND '),
-		    *terms.map { |e| [e] * num_or_conds }.flatten
-		  )
-	  }
 
 	  scope :sorted_by, lambda { |sort_option|
 			# extract the sort direction from the param value.
@@ -79,14 +48,15 @@ class Score < ActiveRecord::Base
 				#when /^school_name_/
 					#order("(schools.name) #{ direction }").includes(:schools)
 
-		  else
-		    raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
-		  end
-	  }
+			  else
+			    raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+			  end
+		  }
 
 	  scope :with_course_id, lambda { |course_ids|
 	    # Filters scores with any of the given course_ids
-	    where(course_id: [*course_ids])
+	    where(course_id: [Course.where(school_id: current_user.school_id)])
+	    
 	  }
 	 # scope :with_school_id, lambda { |school_ids|
 	    # Filters scores with any of the given school_ids
