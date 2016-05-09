@@ -1,6 +1,10 @@
 <h2 id="shift-contents-right-header">
   My Scores at <i><%= link_to  @user.school.name, @user.school %></i>
-  <a class="btn btn-default" href="<%= new_score_path %>" role="button">New Score</a>
+  <a class="btn btn-default" href="<%= new_score_path %>" role="button">New Score</a><br>
+  <div class="sub-head">
+    Scores Made: <%= Score.where(creator_id: current_user.id).count %>
+    <a class="btn btn-default" href="<%= edit_user_registration_path %>" role="button">Edit Account Info</a><br>
+  </div>
 
 </h2>
 

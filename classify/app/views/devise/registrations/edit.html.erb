@@ -4,6 +4,19 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
 
+    <h5> Name: <%= current_user.full_name %> </h5>
+    <h5> My School: <%= link_to  current_user.school.name, current_user.school %> </h5>
+
+    <%= form_for(:user) do |f| %>
+
+      <%= f.collection_select(:school_id, School.all, :id, :name ) %>
+
+      <div class="actions">
+
+        <%= f.submit "Change School", :class => "btn btn-sm btn-default" %>
+      </div>
+    <% end %>
+
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
@@ -24,18 +37,20 @@
     </div>
 
     <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.label :current_password %> <i>(needed to confirm changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "off" %>
     </div>
+
+    Last time logged in: <%= current_user.last_sign_in_at.month %> / <%= current_user.last_sign_in_at.day %> / <%= current_user.last_sign_in_at.year %>
 
     <div class="actions">
       <%= f.submit "Update" %>
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <h5><strong>Cancel my account</strong></h5>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-  <button type="button" class="btn btn-sm btn-default"><%= link_to 'Back', :back %></button>
+  <p><a class="btn btn-default" href='<%= profile_path %>' role="button">Back &raquo;</a></p>
 </div>

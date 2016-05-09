@@ -64,3 +64,6 @@ end
 
 # Devise handles user authentication
 gem 'devise'
+
+# High Voltage handles static pages
+gem 'high_voltage', '~> 3.0.0'

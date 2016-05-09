@@ -1,6 +1,7 @@
 ##
 # Profile Controller
 class ProfileController < ApplicationController
+before_action :authenticate_user!
 before_action :set_user
   def my_profile
   @scores = Score.all
