@@ -2,7 +2,7 @@
 
 <div class="border-form-div">
   <center>
-    <h2> Your score for<%= @score.course.name %></h2>
+    <h2> Your score for <%= @score.course.name %></h2>
     <h4> at <i><%= link_to  @score.course.school.name, @score.course.school %></i></h4>
   </center>
   <br>
@@ -36,6 +36,6 @@
   <center> <h6><i> <%= link_to "Check out this course's other ratings!", @score.course %> </i></h6> </center>
 
   <button type="button" class="btn btn-sm btn-default"><%= link_to 'Edit', edit_score_path(@score)  %></button>
-  <button type="button" class="btn btn-sm btn-default"><%= link_to 'Back to Provile', profile_path %></button>
+  <button type="button" class="btn btn-sm btn-default"><%= link_to 'Back to Profile', profile_path %></button>
   </center>
 </div>

@@ -1,10 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+
 algebra:
   difficulty_rating: 4
   workload_rating: 4
   likeability_rating: 5
-  comment: This class was tough but I really liked it 
+  comment: This class was tough but I really liked it
   course_id: 1
 
 chemistry:

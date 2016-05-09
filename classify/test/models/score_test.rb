@@ -97,5 +97,4 @@ class ScoreTest < ActiveSupport::TestCase
      assert !score.valid?
    end
 
-
 end

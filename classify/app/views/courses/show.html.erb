@@ -22,7 +22,7 @@
       <td> <center><%= score.difficulty_rating %> </center></td>
       <td> <center> <%= score.workload_rating %> </center></td>
       <td> <center><%= score.likeability_rating %></center> </td>
-      <td> <%= truncate(score.comment, :length => 30) %> </td>
+      <td> <%= truncate(score.comment, :length => 30) %> </td> 
       <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'View', score %></button></td>
     </tr>
     <% end %>
