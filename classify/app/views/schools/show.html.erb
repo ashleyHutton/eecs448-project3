@@ -2,7 +2,10 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <h1> <%= @school.name %></h1>
+  <h1>
+    <%= @school.name %>
+    <a class="btn btn-default" href="<%= profile_path %>" role="button">Go to Profile &raquo;</a>
+  </h1>
   <p><h5><%= @school.description %> </h5></p>
 
 <!--
@@ -39,7 +42,7 @@
         <h5> Location:  <%= @school.address %> </h5>
         <h5>   Courses: <%= @school.courses.count %> </h5>
         <h5>  Classifiers at this School: </b> <%= User.where(school_id: @school.id).count %></h5>
-        <center><%= image_tag"http://maps.googleapis.com/maps/api/staticmap?center=#{@school.latitude},#{@school.longitude}&zoom=15&scale=2&size=225x150&maptype=roadmap&key=AIzaSyDAKcqVkxybheZ6TliLppo3YI0_Z615yVs&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:#{@school.name}%7C#{@school.latitude},#{@school.longitude}"%> </center>
+        <%= image_tag"http://maps.googleapis.com/maps/api/staticmap?center=#{@school.latitude},#{@school.longitude}&zoom=15&scale=2&size=225x150&maptype=roadmap&key=AIzaSyDAKcqVkxybheZ6TliLppo3YI0_Z615yVs&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:#{@school.name}%7C#{@school.latitude},#{@school.longitude}"%>
       </div>
     </div>
 </div>
@@ -63,5 +66,4 @@
     </tr>
     <% end %>
   </table>
-  <center><button type="button" class="btn btn-sm btn-default"><%= link_to 'Back to Profile', profile_path %></button> </center>
 </div>
