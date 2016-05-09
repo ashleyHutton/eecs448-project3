@@ -5,7 +5,7 @@
   <h1> <%= @school.name %></h1>
   <p><h5><%= @school.description %> </h5></p>
 
-
+<!--
   <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-transparent">
     <div class="panel-heading" role="tab" id="headingOne">
@@ -25,7 +25,24 @@
       </div>
     </div>
   </div>
+-->
 
+
+  <div>
+      <h4 class="panel-title">
+          School Information
+
+      </h4>
+
+    <div>
+      <div id="shift-contents-right">
+        <h5> Location:  <%= @school.address %> </h5>
+        <h5>   Courses: <%= @school.courses.count %> </h5>
+        <h5>  Classifiers at this School: </b> <%= User.where(school_id: @school.id).count %></h5>
+        <center><%= image_tag"http://maps.googleapis.com/maps/api/staticmap?center=#{@school.latitude},#{@school.longitude}&zoom=15&scale=2&size=225x150&maptype=roadmap&key=AIzaSyDAKcqVkxybheZ6TliLppo3YI0_Z615yVs&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:#{@school.name}%7C#{@school.latitude},#{@school.longitude}"%> </center>
+      </div>
+    </div>
+</div>
 
   <h2> Rated Courses </h2>
   <table class = "table table-striped">
