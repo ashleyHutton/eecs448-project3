@@ -2,14 +2,17 @@
 # Courses Controller
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: :new
-
+  #before_action :authenticate_user!
 
   ##
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.where(school_id: current_user.school_id)
+    if user_signed_in?
+      @courses = Course.where(school_id: current_user.school_id)
+    else 
+      @courses = Course.all
+    end 
   end
 
   ##

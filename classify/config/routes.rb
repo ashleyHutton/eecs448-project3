@@ -3,11 +3,11 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :courses
-  resources :scores
-  resources :schools
+  resources :courses, only: [:index, :show]
+  resources :scores, except: :index
+  resources :schools, only: [:show]
 
-  root to: 'scores#index'
+  root to: 'courses#index'
 
 
   devise_scope :user do

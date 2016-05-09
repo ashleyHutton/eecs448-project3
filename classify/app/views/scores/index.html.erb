@@ -6,14 +6,6 @@
 
   <%= form_for_filterrific @filterrific do |f| %>
     <div>
-      Search
-      <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-      <%= f.text_field(
-        :search_query,
-        class: 'filterrific-periodically-observed'
-      ) %>
-    </div>
-    <div>
       Course
       <%= f.select(
         :with_course_id,
@@ -31,8 +23,6 @@
         reset_filterrific_url,
       ) %>
     </div>
-    <%# add an automated spinner to your form when the list is refreshed %>
-    <%#=render_filterrific_spinner %>
   <% end %>
 
   <div id="filterrific_results">
@@ -79,14 +69,16 @@
         <h2>Rate your courses.</h2>
         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
         <p><a class="btn btn-danger" href="#" role="button" id="white-text-button">View details &raquo;</a></p>
-        <p><button type="button" class="btn btn-sm btn-danger" id="white-text-button"><%= link_to 'View details', new_score_path %></button></a>
+        <p><button type="button" class="btn btn-sm btn-danger" id="white-text-button">
+          <!-- <%= link_to 'View details', new_score_path %></button></a> -->
 
       </div>
       <div class="col-md-4">
         <h2>Check your school.</h2>
         <p>How does your high school rank among others in your area? Classify uses course scores created by students like you to assess how students feel about their schools. </p>
         <p><a class="btn btn-warning" href="#" role="button" id="white-text-button">View rankings &raquo;</a></p>
-        <p><button type="button" class="btn btn-sm btn-warning" id="white-text-button"><%= link_to 'View rankings', schools_path %></button></a>
+        <p><button type="button" class="btn btn-sm btn-warning" id="white-text-button">
+          <!-- <%= link_to 'View rankings', new_score_path %></button></a> -->
 
      </div>
       <div class="col-md-4">
