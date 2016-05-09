@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :courses, only: [:index, :show]
-  resources :scores
+  resources :scores, except: :index
   resources :schools, only: [:show]
 
-  root to: 'scores#index'
+  root to: 'courses#index'
 
 
   devise_scope :user do

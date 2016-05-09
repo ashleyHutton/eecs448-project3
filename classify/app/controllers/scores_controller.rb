@@ -8,7 +8,7 @@ class ScoresController < ApplicationController
   # GET /scores
   # GET /scores.json
   def index
-    @scores = Score.where(Course.where(school_id: current_user.school_id))
+    @scores = Score.all
 
     @filterrific = initialize_filterrific(
       Score,
