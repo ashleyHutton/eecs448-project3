@@ -1,6 +1,7 @@
 <h2 id="shift-contents-right-header">
   My Scores at <i><%= link_to  @user.school.name, @user.school %></i>
-  <button type="button" class="btn btn-sm btn-default"><%= link_to 'New Score', new_score_path %></button>
+  <a class="btn btn-default" href="<%= new_score_path %>" role="button">New Score</a>
+
 </h2>
 
 <table  class = "table table-striped">
@@ -24,9 +25,10 @@
       <td><%= score.likeability_rating %></td>
       <td><%= score.comment %></td>
       <td><%= score.course.name if score.course %></td>
-      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Show', score %></button></td>
-      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Edit', edit_score_path(score) %></button></td>
-      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' }  %></button></td>
+      <td><a class="btn btn-default" href="<%= score_path(score) %>" role="button">Show</a></td>
+      <td><a class="btn btn-default" href="<%= edit_score_path(score) %>" role="button">Edit</a></td>
+
+      <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'Delete', score, method: :delete, data: { confirm: 'Are you sure?' }  %></button></td>
 
     </tr>
     <% end %>
