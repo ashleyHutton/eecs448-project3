@@ -6,10 +6,17 @@
       Courses at <i><%= link_to  current_user.school.name, current_user.school %></i>
     </h2>
 
-
-
-
     <%= form_for_filterrific @filterrific do |f| %>
+      <div>
+        Sorted by
+        <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], { include_blank: '- Any -' }) %>
+      </div>
+      <div>
+        <%= link_to(
+          'Reset filters',
+          reset_filterrific_url,
+        ) %>
+      </div>
 
   <div>
     Sorted by
@@ -24,17 +31,16 @@
 
 <% end %>
 
-<%= render(
-  partial: 'courses/list',
-  locals: { courses: @courses }
-) %>
 
+    <%= render(
+      partial: 'courses/list',
+      locals: { courses: @courses }
+      )
+    %>
 
-
-
-
-
-    <center><button type="button" class="btn btn-sm btn-default"><%= link_to 'Back to Profile', profile_path %></button> </center>
+  <!--  <center>
+      <p><a class="btn btn-default" href='<%= profile_path %>' role="button">Go to Profile &raquo;</a></p>
+    </center> -->
 
   </div>
 
@@ -60,7 +66,7 @@
         <h1 id = "shadowed-header">Make high school count.</h1>
         <p id = "shadowed-subhead">Classify enables you to make smarter enrollment decisions.</p>
         <!--<a href="https://github.com/twbs/bootstrap-examples/archive/master.zip" class="btn btn-default btn-lg">Sign Up</a>-->
-        <li class="btn btn-default btn-lg"><%= link_to 'Sign Up', new_user_session_path %> </li>
+        <a class="btn btn-default btn-lg" href='<%= new_user_registration_path %>' role="button" >Sign Up</a>
 
       </div>
     </div>
@@ -71,20 +77,20 @@
         <div class="col-md-4">
           <h2>Rate your courses.</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-danger" href="#" role="button" id="white-text-button">View details &raquo;</a></p>
+          <p><a class="btn btn-danger" href='<%= profile_path %>' role="button" id="white-text-button">View details &raquo;</a></p>
 
 
         </div>
         <div class="col-md-4">
           <h2>Check your school.</h2>
           <p>How does your high school rank among others in your area? Classify uses course scores created by students like you to assess how students feel about their schools. </p>
-          <p><a class="btn btn-warning" href="#" role="button" id="white-text-button">View rankings &raquo;</a></p>
+          <p><a class="btn btn-warning" href="<%= page_path('checkYourSchool')%>" role="button" id="white-text-button">View rankings &raquo;</a></p>
 
        </div>
         <div class="col-md-4">
           <h2>Join our team.</h2>
           <p>Are you passionate about your school? Do you want to help your peers get the most out of their high schoole experiences? Consider joining our team as a Classify ambassador. Help us make our vision of world domination come to life. </p>
-          <p><a class="btn btn-primary" href="#" role="button" id="white-text-button">Learn more &raquo;</a></p>
+          <p><a class="btn btn-primary" href="<%= page_path('joinOurTeam')%>" role="button" id="white-text-button">Learn more &raquo;</a></p>
 
         </div>
 

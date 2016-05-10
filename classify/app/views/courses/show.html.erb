@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-  <h2> <i><%= @course.name %></i> at <i><%= link_to  @course.school.name, @course.school %></i></h2>
+  <h2>
+    <i><%= @course.name %></i> at <i><%= link_to  @course.school.name, @course.school %></i>
+    <a class="btn btn-default" href="<%= courses_path %>" role="button">Back to Courses</a><br>
+
+  </h2>
 
 
   <table class = "table table-striped">
@@ -35,5 +39,4 @@
 
 
   </table>
-  <center><button type="button" class="btn btn-sm btn-default"><%= link_to 'Back to Courses', courses_path %></button> </center>
 </div>
