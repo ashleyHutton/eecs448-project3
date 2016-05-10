@@ -10,10 +10,10 @@ class Score < ActiveRecord::Base
 	belongs_to :course
 
 	validates :course_id, presence: true
-	validates_inclusion_of		:difficulty_rating, :in => 1..5
-	validates_inclusion_of		:likeability_rating, :in => 1..5
-	validates_inclusion_of		:workload_rating, :in => 1..5
-	validates :creator_id, uniqueness: {scope: :course_id}
+	validates_inclusion_of		:difficulty_rating, {:in => 1..5, :message => ": Must be between 1 - 5"}
+	validates_inclusion_of		:likeability_rating, {:in => 1..5, :message => ": Must be between 1 - 5"}
+	validates_inclusion_of		:workload_rating, {:in => 1..5, :message => ": Must be between 1 - 5"}
+	validates :creator_id, uniqueness: {scope: :course_id, :message => ": You have already scored this course."}
 
 	scope :sorted_by, -> (id) { where(:id => id) }
 
