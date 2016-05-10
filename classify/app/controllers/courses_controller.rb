@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
             sorted_by: Course.options_for_sorted_by,
           }
         ) or return
-      #@courses = @filterrific.find
+      @courses = @filterrific.find
 
       respond_to do |format|
       format.html

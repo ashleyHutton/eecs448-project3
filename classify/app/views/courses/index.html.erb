@@ -9,7 +9,7 @@
     <%= form_for_filterrific @filterrific do |f| %>
       <div>
         Sorted by
-        <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], { include_blank: '- Any -' }) %>
+        <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
       </div>
       <div>
         <%= link_to(
@@ -17,17 +17,6 @@
           reset_filterrific_url,
         ) %>
       </div>
-
-  <div>
-    Sorted by
-    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], { include_blank: '- Any -' }) %>
-  </div>
-  <div>
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_url,
-    ) %>
-  </div>
 
 <% end %>
 
