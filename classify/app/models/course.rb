@@ -9,7 +9,7 @@ class Course < ActiveRecord::Base
 
 
 	filterrific(
-		  default_filter_params: { sorted_by: 'name_desc' },
+		  default_filter_params: { sorted_by: 'name_asc' },
 		  available_filters: [
 		    :sorted_by,
 		  ]
@@ -42,7 +42,7 @@ class Course < ActiveRecord::Base
 
   def self.options_for_sorted_by
     [
-    	['Course Name (a-z)', 'name_desc'],
+    	['Course Name (a-z)', 'name_asc'],
 		['Least Difficult', 'difficulty_rating_asc'],
 		['Least Workload', 'workload_rating_asc'],
 		['Most Liked', 'likeability_rating_desc']
