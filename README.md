@@ -29,6 +29,6 @@ Our test code is located in our app at test/models. Each file contains tests for
 - test_should_not_save_score_without_creator_id
 
 ##### Documentation
-We used rdoc for documentation. It can be accessed in our doc folder. To view it, open the **index.html** file in a browser.
+We used rdoc for documentation. It can be accessed in our Documentation folder inside the classify directory. To view it, open the **index.html** file in a browser.
 The **index.html** page serves as a table of contents through which navigation for the rest of our app's documentation can be
 accessed.
