@@ -5,6 +5,7 @@ class SchoolTest < ActiveSupport::TestCase
   test "should not save if duplicate school name" do
     temp = School.new
     temp.name = "ABC"
+    temp.address = "DEFF"
     temp.save
 
     actual = School.new
@@ -22,4 +23,5 @@ class SchoolTest < ActiveSupport::TestCase
 
     assert_not temp.valid?
   end
+
 end

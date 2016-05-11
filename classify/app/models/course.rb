@@ -6,7 +6,8 @@ class Course < ActiveRecord::Base
 	# Course names must be unique
 	has_many :scores
 	belongs_to :school
-
+	validates :name, presence: true
+	validates :school_id, presence: true
 
 	filterrific(
 		  default_filter_params: { sorted_by: 'name_asc' },

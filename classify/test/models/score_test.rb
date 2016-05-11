@@ -72,7 +72,6 @@ class ScoreTest < ActiveSupport::TestCase
    end
 
    # course id tests --------------------------------------------------------
-   ## DEBUG - This test doesn't work properly
    test "should not save score without course id" do
      score = Score.new
      score.likeability_rating = 8
@@ -81,11 +80,10 @@ class ScoreTest < ActiveSupport::TestCase
      #score.course_id = 1 #no course id
      score.creator_id = 1
      score.comment = "average course "
-     assert !score.valid?
+     assert_not score.valid?
    end
 
    # creator id tests --------------------------------------------------------
-   ## DEBUG - This test doesn't work properly
    test "should not save score without creator id" do
      score = Score.new
      score.likeability_rating = 8
@@ -94,7 +92,7 @@ class ScoreTest < ActiveSupport::TestCase
      score.course_id = 1
      #score.creator_id = 1 #no creator id
      score.comment = "average course "
-     assert !score.valid?
+     assert_not score.valid?
    end
 
 end
