@@ -70,7 +70,7 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-courses">#courses</a>
+    <li ><a href="#method-i-address">#address</a>
     
   </ul>
 </div>
@@ -108,10 +108,10 @@
        </header>
 
     
-      <div id="method-i-courses" class="method-detail ">
+      <div id="method-i-address" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">courses</span><span
+          <span class="method-name">address</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -127,9 +127,9 @@ href="School.html">School</a> names must be unique</p>
           
 
           
-          <div class="method-source-code" id="courses-source">
+          <div class="method-source-code" id="address-source">
             <pre><span class="ruby-comment"># File app/models/school.rb, line 7</span>
-<span class="ruby-identifier">has_many</span> <span class="ruby-value">:courses</span>
+<span class="ruby-identifier">geocoded_by</span> <span class="ruby-value">:address</span>  <span class="ruby-comment"># can also be an IP address</span>
 </pre>
           </div>
           

@@ -70,6 +70,8 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-c-options_for_sorted_by">::options_for_sorted_by</a>
+    
     <li ><a href="#method-i-course">#course</a>
     
   </ul>
@@ -102,6 +104,51 @@
     
 
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-options_for_sorted_by" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">options_for_sorted_by</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This method provides select options for the `sorted_by` filter select
+input. It is called in the controller as part of `initialize_filterrific`.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="options_for_sorted_by-source">
+            <pre><span class="ruby-comment"># File app/models/score.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">options_for_sorted_by</span>
+  [
+    [<span class="ruby-string">&#39;Newest Scores&#39;</span>, <span class="ruby-string">&#39;created_at_desc&#39;</span>],
+    [<span class="ruby-string">&#39;Oldest Scores&#39;</span>, <span class="ruby-string">&#39;created_at_asc&#39;</span>],
+  ]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>

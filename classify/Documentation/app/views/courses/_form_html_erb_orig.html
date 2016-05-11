@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>schools.coffee - RDoc Documentation</title>
+<title>_form.html.erb.orig - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../../";
@@ -112,12 +112,54 @@
   </div>
 </nav>
 
-<main role="main" aria-label="Page app/assets/javascripts/schools.coffee">
+<main role="main" aria-label="Page app/views/courses/_form.html.erb.orig">
 
-<p>Place all the behaviors and hooks related to the matching controller here.
-All this logic will automatically be available in application.js. You can
-use CoffeeScript in this file: <a
-href="http://coffeescript.org">coffeescript.org</a>/</p>
+<p>&lt;%= form_for(@course) do |f| %&gt;</p>
+
+<pre>&lt;center&gt;&lt;h2&gt;New Course &lt;br&gt;&lt;/h2&gt;&lt;/center&gt;
+
+&lt;% if @course.errors.any? %&gt;
+  &lt;div id=&quot;error_explanation&quot;&gt;
+    &lt;h2&gt;&lt;%= pluralize(@course.errors.count, &quot;error&quot;) %&gt; prohibited this course from being saved:&lt;/h2&gt;
+
+    &lt;ul&gt;
+    &lt;% @course.errors.full_messages.each do |message| %&gt;
+      &lt;li&gt;&lt;%= message %&gt;&lt;/li&gt;
+    &lt;% end %&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;</pre>
+
+<p>&lt;!–  &lt;div class=“field”&gt;</p>
+
+<pre>&lt;%= f.label :school_id %&gt;&lt;br&gt;
+&lt;!-- :course_id is foreign key in Scores table,
+     :Course.all specifies what in the Course table to include in the dropdown menu
+     :id is primary key in the Course table
+     :name is what attribute of the Course table will display in the menu--&gt;</pre>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+
+<pre>&lt;!--  &lt;%= f.collection_select(:school_id, School.all, :id, :name ) %&gt;&lt;br&gt;</pre>
+
+<h6 id="label-"><span><a href="#label-">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
+<pre>&lt;%= f.collection_select(:school_id, School.all, :id, :name { include_blank: &#39;- Select School -&#39; }) %&gt;&lt;br&gt;</pre>
+
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; course-average</p>
+
+<pre>  &lt;em&gt;Don&#39;t see your school? Click &lt;%= link_to &#39;Here&#39;, new_school_path %&gt; &lt;/em&gt;&lt;br&gt;
+
+&lt;/div&gt; --&gt;
+&lt;div class=&quot;field&quot;&gt;
+  &lt;%= f.label :name %&gt;&lt;br&gt;
+  &lt;%= f.text_field :name %&gt;
+&lt;/div&gt;
+&lt;div class=&quot;actions&quot;&gt;
+  &lt;%= f.submit %&gt;
+&lt;/div&gt;</pre>
+
+<p>&lt;% end %&gt;</p>
 </main>
 
 

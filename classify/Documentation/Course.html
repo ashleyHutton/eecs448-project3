@@ -70,6 +70,8 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-c-options_for_sorted_by">::options_for_sorted_by</a>
+    
     <li ><a href="#method-i-scores">#scores</a>
     
   </ul>
@@ -102,6 +104,52 @@
     
 
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-options_for_sorted_by" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">options_for_sorted_by</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="options_for_sorted_by-source">
+            <pre><span class="ruby-comment"># File app/models/course.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">options_for_sorted_by</span>
+  [
+      [<span class="ruby-string">&#39;Course Name (a-z)&#39;</span>, <span class="ruby-string">&#39;name_asc&#39;</span>],
+              [<span class="ruby-string">&#39;Least Difficult&#39;</span>, <span class="ruby-string">&#39;difficulty_rating_asc&#39;</span>],
+              [<span class="ruby-string">&#39;Least Workload&#39;</span>, <span class="ruby-string">&#39;workload_rating_asc&#39;</span>],
+              [<span class="ruby-string">&#39;Most Liked&#39;</span>, <span class="ruby-string">&#39;likeability_rating_desc&#39;</span>]
+  ]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>

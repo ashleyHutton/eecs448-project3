@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>index.html.erb.orig - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/darkfish.js"></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/bootstrap_js.html">bootstrap.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/courses_coffee.html">courses.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/schools_coffee.html">schools.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/scores_coffee.html">scores.coffee</a>
+  
+    <li><a href="../../../app/assets/stylesheets/application_css.html">application.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/bootstrap-theme_min_css.html">bootstrap-theme.min.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/bootstrap_min_css.html">bootstrap.min.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/courses_scss.html">courses.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/scaffolds_scss.html">scaffolds.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/schools_scss.html">schools.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/scores_scss.html">scores.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/stylesheet_css.html">stylesheet.css</a>
+  
+    <li><a href="../../../app/views/courses/_form_html_erb_orig.html">_form.html.erb.orig</a>
+  
+    <li><a href="../../../app/views/courses/index_html_erb_orig.html">index.html.erb.orig</a>
+  
+    <li><a href="../../../app/views/courses/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/courses/show_json_jbuilder.html">show.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/layouts/application_html_erb_orig.html">application.html.erb.orig</a>
+  
+    <li><a href="../../../app/views/schools/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/schools/show_json_jbuilder.html">show.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/scores/_list_html.html">_list.html</a>
+  
+    <li><a href="../../../app/views/scores/index_html_erb_orig.html">index.html.erb.orig</a>
+  
+    <li><a href="../../../app/views/scores/index_json_jbuilder.html">index.json.jbuilder</a>
+  
+    <li><a href="../../../app/views/scores/show_json_jbuilder.html">show.json.jbuilder</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page app/views/scores/index.html.erb.orig">
+
+<p>&lt;p id=“notice”&gt;&lt;%= notice %&gt;&lt;/p&gt;</p>
+
+<p>&lt;% if user_signed_in? %&gt;</p>
+
+<pre>&lt;h2&gt;
+  Course Scores
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-sm btn-default&quot;&gt;&lt;%= link_to &#39;New Score&#39;, new_score_path %&gt;&lt;/button&gt;
+&lt;/h2&gt;
+
+&lt;%= form_for_filterrific @filterrific do |f| %&gt;
+  &lt;div&gt;
+    Search
+    &lt;%# give the search field the &#39;filterrific-periodically-observed&#39; class for live updates %&gt;
+    &lt;%= f.text_field(
+      :search_query,
+      class: &#39;filterrific-periodically-observed&#39;
+    ) %&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    Course
+    &lt;%= f.select(
+      :with_course_id,
+      @filterrific.select_options[:with_course_id],
+      { include_blank: &#39;- Any -&#39; }
+    ) %&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    Sorted by
+    &lt;%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], { include_blank: &#39;- Any -&#39;}) %&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;%= link_to(
+      &#39;Reset filters&#39;,
+      reset_filterrific_url,
+    ) %&gt;
+  &lt;/div&gt;
+  &lt;%# add an automated spinner to your form when the list is refreshed %&gt;
+  &lt;%#=render_filterrific_spinner %&gt;
+&lt;% end %&gt;
+
+&lt;div id=&quot;filterrific_results&quot;&gt;
+  &lt;%= render(
+    partial: &#39;scores/list&#39;,
+    locals: { scores: @scores }
+  ) %&gt;
+&lt;/div&gt;</pre>
+
+<p>&lt;% else %&gt;</p>
+
+<pre>&lt;!-- Navbar --&gt;
+&lt;nav class = &quot;navbar navbar-ct-transparent&quot;&gt;
+  &lt;div class=&quot;navbar-header&quot;&gt;
+    &lt;div class = &quot;container&quot;&gt;
+      &lt;a&gt;
+        &lt;%= link_to image_tag(&#39;classify_logo_v4.png&#39;, width: &#39;210&#39;, height: &#39;60&#39;, alt: &#39;Molecular structure of Buckminsterfullerene&#39;), root_path, title: &#39;Buckminsterfullerene&#39;, rel: &#39;tooltip&#39;, relative: true %&gt;
+      &lt;/a&gt;
+
+      &lt;ul class=&quot;nav navbar navbar-right&quot;&gt;
+        &lt;li class=&quot;button&quot;&gt;&lt;%= link_to &#39;Login&#39;, new_user_session_path %&gt; &lt;/li&gt;
+      &lt;/ul&gt;x`x
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class=&quot;jumbotron&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;h1 id = &quot;shadowed-header&quot;&gt;Make high school count.&lt;/h1&gt;
+    &lt;p id = &quot;shadowed-subhead&quot;&gt;Classify enables you to make smarter enrollment decisions.&lt;/p&gt;
+    &lt;!--&lt;a href=&quot;https://github.com/twbs/bootstrap-examples/archive/master.zip&quot; class=&quot;btn btn-default btn-lg&quot;&gt;Sign Up&lt;/a&gt;--&gt;
+    &lt;li class=&quot;btn btn-default btn-lg&quot;&gt;&lt;%= link_to &#39;Sign Up&#39;, new_user_session_path %&gt; &lt;/li&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+
+<pre>&lt;div class=&quot;container&quot;&gt;
+  &lt;!-- Example row of columns --&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;h2&gt;Rate your courses.&lt;/h2&gt;
+      &lt;p&gt;Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. &lt;/p&gt;
+      &lt;p&gt;&lt;a class=&quot;btn btn-danger&quot; href=&quot;#&quot; role=&quot;button&quot; id=&quot;white-text-button&quot;&gt;View details &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;h2&gt;Check your school.&lt;/h2&gt;
+      &lt;p&gt;How does your high school rank among others in your area? Classify uses course scores created by students like you to assess how students feel about their schools. &lt;/p&gt;
+      &lt;p&gt;&lt;a class=&quot;btn btn-warning&quot; href=&quot;#&quot; role=&quot;button&quot; id=&quot;white-text-button&quot;&gt;View rankings &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+   &lt;/div&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+      &lt;h2&gt;Join our team.&lt;/h2&gt;
+      &lt;p&gt;Are you passionate about your school? Do you want to help your peers get the most out of their high schoole experiences? Consider joining our team as a Classify ambassador. Help us make our vision of world domination come to life. &lt;/p&gt;
+      &lt;p&gt;&lt;a class=&quot;btn btn-primary&quot; href=&quot;#&quot; role=&quot;button&quot; id=&quot;white-text-button&quot;&gt;Learn more &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<p>&lt;%end%&gt;</p>
+
+<h6 id="label-"><span><a href="#label-">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
+<p><br> &gt;&gt;&gt;&gt;&gt;&gt;&gt; course-average</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
