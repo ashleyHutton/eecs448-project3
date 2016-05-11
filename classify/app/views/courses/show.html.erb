@@ -26,7 +26,7 @@
       <td> <center><%= score.difficulty_rating %> </center></td>
       <td> <center> <%= score.workload_rating %> </center></td>
       <td> <center><%= score.likeability_rating %></center> </td>
-      <td> <%= truncate(score.comment, :length => 30) %> </td>
+      <td> <%= score.comment %> </td>
       <% if score.creator_id == current_user.id %>
         <td><button type="button" class="btn btn-sm btn-default"><%= link_to 'View/Edit', score %></button>
 

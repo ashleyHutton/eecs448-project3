@@ -7,28 +7,26 @@
   </center>
   <br>
 
-  <%= form_for(@score) do |f| %>
+  <div class="field">
+    <%= :difficulty_rating %>:
+    <%= @score.difficulty_rating %>
+  </div>
 
-    <div class="field">
-      <%= f.label :difficulty_rating %>:
-      <%= f.label @score.difficulty_rating %>
-    </div>
+  <div class="field">
+    <%= :workload_rating %>:
+    <%= @score.workload_rating %>
+  </div>
 
-    <div class="field">
-      <%= f.label :workload_rating %>:
-      <%= f.label @score.workload_rating %>
-    </div>
+  <div class="field">
+    <%= :likeability_rating %>:
+    <%= @score.likeability_rating %>
+  </div>
 
-    <div class="field">
-      <%= f.label :likeability_rating %>:
-      <%= f.label @score.likeability_rating %>
-    </div>
+  <div class="field">
+    <%= :comment %>:
+    <%= @score.comment %>
+  </div>
 
-    <div class="field">
-      <%= f.label :comment %>:
-      <%= f.label @score.comment %>
-    </div>
-  <% end %>
 
 
 

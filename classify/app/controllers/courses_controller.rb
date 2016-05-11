@@ -10,25 +10,6 @@ class CoursesController < ApplicationController
   def index
     if user_signed_in?
       @courses = Course.where(school_id: current_user.school_id)
-      @filterrific = initialize_filterrific(
-          Course,
-          params[:filterrific],
-          select_options: {
-            sorted_by: Course.options_for_sorted_by,
-          }
-        ) or return
-      @courses = @filterrific.find.where(school_id: current_user.school_id)
-
-      respond_to do |format|
-      format.html
-      format.json
-      format.js
-    end
-
-    #rescue ActiveRecord::RecordNotFound => e
-    #  puts "Had to reset filterrific params: #{e.message}"
-    #  redirect_to(reset_filterrific_url(format: :html)) and return
-    #end
     else 
       @courses = Course.all
     end 
